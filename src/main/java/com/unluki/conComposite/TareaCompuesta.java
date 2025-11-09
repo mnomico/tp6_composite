@@ -43,12 +43,10 @@ public class TareaCompuesta implements Tarea{
         double sumatoriaPorcentajes = 0;
         int cantidadTareasSimples = 0;
         for (Tarea tarea : listaTareas) {
-            if (tarea instanceof TareaCompuesta) {
-                sumatoriaPorcentajes += tarea.reporteProgreso();
-            } else {
+            if (tarea instanceof TareaSimple) {
                 cantidadTareasSimples++;
-                sumatoriaPorcentajes = tarea.reporteProgreso();
             }
+            sumatoriaPorcentajes = tarea.reporteProgreso();
         }
         return cantidadTareasSimples > 0 ? (sumatoriaPorcentajes / cantidadTareasSimples) : 0;
     }
