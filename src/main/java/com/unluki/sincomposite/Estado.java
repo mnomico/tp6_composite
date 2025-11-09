@@ -3,7 +3,7 @@ public enum Estado {
     EN_CURSO(25),
     EN_REVIEW(50),
     CASI_LISTO(75),
-    COMPLETADO(100)
+    COMPLETADO(100);
 
     Estado(int codigo) {
         this.codigo = codigo;

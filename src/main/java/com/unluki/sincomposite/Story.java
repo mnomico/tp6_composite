@@ -1,16 +1,19 @@
 public class Story {
     private int id;
-    private HashMap<int,Tarea> tareas;
+    private String titulo;
+    private HashMap<Integer,Tarea> tareas;
 
-    public Story(){
+    public Story(int id, String titulo){
         this.tareas = new HashMap<>();
+        this.titulo = titulo;
+        this.id = id;
     }
 
-    public void addTask(Tarea tarea){
+    public void addTarea(Tarea tarea){
         this.tareas.put(tarea);
     }
     
-    public Task getTask(int id){
+    public Task getTarea(int id){
         return this.tareas.get(id);
     }
 
@@ -18,7 +21,7 @@ public class Story {
         return this.tareas.size();
     }
 
-    public int getPorcentajeCompletado() {
+    public double getPorcentajeCompletado() {
         if (tareas.isEmpty()) return 0;
 
         int suma = 0;
@@ -27,12 +30,12 @@ public class Story {
             suma += tarea.getProgreso();
         }
 
-        int promedio = suma / getCantidadTareas();
+        double promedio = suma / getCantidadTareas();
 
-        return (int) Math.round(promedio);
+        return Math.round(promedio);
     }
 
-    public void removeTask(int id){
+    public void removeTarea(int id){
         this.tareas.remove(id);
     }
 
@@ -45,10 +48,11 @@ public class Story {
         return result;
     }
 
-    public int getProgresoTotal(){
-        int result = 0;
+    public String toString(){
+        String result = "Story: "+this.id+ " "+this.titulo + "total completado: %"+this.getPorcentajeCompletado() + "\n";
+
         for (Tarea tarea : tareas.values()) {
-            result = result + tarea.getProgreso();
+            result += "   "+tarea.toString()+"\n";
         }
 
         return result;
