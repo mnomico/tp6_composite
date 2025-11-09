@@ -1,3 +1,5 @@
+package com.unluki.sincomposite;
+
 public class Tarea {
     private int id;
     private int duracion;
@@ -8,6 +10,10 @@ public class Tarea {
         this.id = id;
         this.duracion = duracion;
         this.descripcion = descripcion;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getDuracion(){
@@ -23,25 +29,11 @@ public class Tarea {
     }
 
     public Estado setEstado(Estado estado){
-        this.estado = estado;
+        return this.estado = estado;
     }
 
     public String toString(){
-        return "id: "+this.id+" duracion: "+this.duracion+" descripcion: "+this.descripcion+" ESTADO: "+this.estado;
+        return "Tarea: "+this.id+" duracion: "+this.duracion+" descripcion: "+this.descripcion+" ESTADO: "+this.estado;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(id, persona.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    
 }

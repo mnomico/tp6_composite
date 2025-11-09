@@ -1,3 +1,7 @@
+package com.unluki.sincomposite;
+
+import java.util.HashMap;
+
 public class Epic {
     private int id;
     private String titulo;
@@ -14,19 +18,19 @@ public class Epic {
     }
 
     public void addStory(Story story){
-        this.stories.put(story);
+        this.stories.put(story.getId(), story);
     }
 
     public Story getStory(int id){
         return this.stories.get(id);
     }
 
-    public addTask(int storyId, Tarea tarea){
+    public void addTask(int storyId, Tarea tarea){
         this.getStory(storyId).addTarea(tarea); // esto si lo hacemos y añadimos más niveles de árbol (ej subtarea, big EPIC u otro), crece de forma indefinida
     }
 
-    public Task getTask(int storyId, int taskId){
-        this.getStory(storyId).getTarea(taskId); // también debemos pasar múltiples parámetros para obtener un solo dato
+    public Tarea getTask(int storyId, int taskId){
+        return this.getStory(storyId).getTarea(taskId); // también debemos pasar múltiples parámetros para obtener un solo dato
     }
 
     public double getPorcentajeCompletado() {
@@ -56,8 +60,8 @@ public class Epic {
 
 
     public String toString(){
-        String result = "Epic: "+this.id+ " "+this.titulo + "total completado: %"+this.getPorcentajeCompletado() + "\n";
-        for (Story story : story.values()) {
+        String result = "Epic: "+this.id+ " "+this.titulo + " total completado: %"+this.getPorcentajeCompletado() + "\n";
+        for (Story story : stories.values()) {
             result += "   "+story.toString()+"\n";
         }
 

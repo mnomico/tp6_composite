@@ -1,3 +1,7 @@
+package com.unluki.sincomposite;
+
+import java.util.HashMap;
+
 public class Story {
     private int id;
     private String titulo;
@@ -9,11 +13,15 @@ public class Story {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void addTarea(Tarea tarea){
-        this.tareas.put(tarea);
+        this.tareas.put(tarea.getId(), tarea);
     }
     
-    public Task getTarea(int id){
+    public Tarea getTarea(int id){
         return this.tareas.get(id);
     }
 
@@ -49,10 +57,10 @@ public class Story {
     }
 
     public String toString(){
-        String result = "Story: "+this.id+ " "+this.titulo + "total completado: %"+this.getPorcentajeCompletado() + "\n";
+        String result = "\tStory: "+this.id+ " "+this.titulo + " total completado: %"+this.getPorcentajeCompletado() + "\n";
 
         for (Tarea tarea : tareas.values()) {
-            result += "   "+tarea.toString()+"\n";
+            result += "\t\t" + tarea.toString() + "\n";
         }
 
         return result;
